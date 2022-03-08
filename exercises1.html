@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM manipulation and events</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        border: 10px orange solid;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Add three divs to an HTML page, each with a unique id-->
+    <div id="d1"></div>
+    <div id="d2"></div>
+    <div id="d3"></div>
+    <button id="btn">Change color</button>
+
+    <!--a) When the page initially is loaded all divs should be given a colour of your choice
+    Hints: use document.querySelectorAll("div") and element.style.backgroundColor-->
+
+    <script>
+      const divs = document.querySelectorAll("div");
+      divs.forEach((div) => (div.style.backgroundColor = "black"));
+    </script>
+
+    <!-- b) Add a button, and assign a click handler to the button. When the button is clicked each div should be given a unique colour.
+Hints: use document.getElementById(..) to get the individual div’s-->
+    <script>
+      function setColor() {
+        document.querySelectorAll("div");
+        divs[0].style.backgroundColor = "brown";
+        divs[1].style.backgroundColor = "grey";
+        divs[2].style.backgroundColor = "purple";
+      }
+
+      const btn = document.getElementById("btn");
+      btn.onclick = setColor;
+    </script>
+  </body>
+</html>

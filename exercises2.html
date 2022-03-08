@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling and event arguments</title>
+    <style>
+      .mydiv {
+        width: 25px;
+        height: 25px;
+        background-color: yellow;
+        margin: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--In a new HTML page add two div’s, each with a unique id
+    Style both id’s with this class: 
+    .mydiv {width: 25px; height: 25px;background-color:yellow; margin:1px;}-->
+    <p id="p1"></p>
+    <div class="mydiv" id="d1"></div>
+    <div class="mydiv" id="d2"></div>
+
+    <!-- a) Add a click handler to each div and write code, so when clicked, 
+        each div will write to the console "Hi from idOfTheDiv".-->
+
+    <!--c) Add an empty paragraph tag, with an id, to your HTML and change the code for both exercises above, so that output is not written to the console, but into this paragraph.
+
+Hint: Use the innerText property of an Element-->
+    <script>
+      const text = document.getElementById("p").innerText;
+
+      document.getElementById("d1").onclick = console.log("Hi from d1");
+      document.getElementById("d1").onclick = text.concat("Hi from");
+
+      document.getElementById("d2").onclick = console.log("Hi from d2");
+    </script>
+
+    <!-- b)  Now, using cut and paste, add 10 more divs (still each with a unique id).
+Add a new div with the id="outer" around all our div’s and 
+assign a single click eventhandler (with the event argument)  to this div.-->
+
+    <div id="outer">
+      <div class="mydiv" id="a"></div>
+      <div class="mydiv" id="b"></div>
+      <div class="mydiv" id="c"></div>
+      <div class="mydiv" id="d"></div>
+      <div class="mydiv" id="e"></div>
+      <div class="mydiv" id="f"></div>
+      <div class="mydiv" id="g"></div>
+      <div class="mydiv" id="h"></div>
+      <div class="mydiv" id="i"></div>
+      <div class="mydiv" id="j"></div>
+    </div>
+
+    <script>
+      document.getElementById("outer").onclick = (e) =>
+        console.log("Hi from " + e.target.id);
+    </script>
+    <!--c) Add an empty paragraph tag, with an id, to your HTML and change the code for both exercises above, so that output is not written to the console, but into this paragraph.
+
+Hint: Use the innerText property of an Element-->
+  </body>
+</html>
