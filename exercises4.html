@@ -27,7 +27,7 @@
             <th>Make</th>
             <th>Model</th>
             <th>Year</th>
-            <th>Price</th>
+            <th id="table-price">Price</th>
           </tr>
           <tbody id="t1">
 
@@ -35,8 +35,11 @@
         </thead>
 
       </table>
-      <input id="input-id"/>
+      <form>
+      <input id="input-id">
     <button id="btn-less" type="button" class="btn btn-primary">Price less than</button>
+    <button id="btn-clear" class="btn btn-primary">Clear</button>
+  </form>
     </div>
     
   </div>
@@ -57,8 +60,8 @@
         { id: 5, year: 2005, make: "Volvo", model: "V70", price: 44799 },
       ];
 
-      function makeTable() {
-        const list = cars
+      function makeTable(carslist) {
+        const list = carslist
           .map(
             (n) => `<tr>
             <td>${n.id}</td>
@@ -71,21 +74,33 @@
           .join("");
         document.getElementById("t1").innerHTML = list;
       }
-      makeTable();
+      makeTable(cars);
      /*
      A new filtered array is created having only prices < than the value provided
       This array is passed to the function implemented in the previous step, 
       nd the DOM is updated with this new table.
      
      */
+        document.getElementById("btn-less").onclick = (evt) => {
+          evt.preventDefault()
+          const price = document.getElementById("input-id").value;
+          const filteredCars = cars.filter(c=>c.price<price)
+          console.log(filteredCars)
+          makeTable(filteredCars);
+        }
 
-      function filterPrice(){
+        document.getElementById("btn-clear").onclick = (evt) => {
+          evt.preventDefault()
+          document.getElementById("input-id").value = "";
+          makeTable(cars)
+        }
 
-      }
-
-
-
+        document.getElementById("table-price").onclick = (evt) =>{
+          evt.preventDefault()
+          console.log("Hej")
+        }
 
     </script>
   </body>
 </html>
+

@@ -27,6 +27,7 @@
 <script>
     //Will eventually (day 4) come from a server-API
     const names = ["Lars", "Peter", "Jan", "Lise", "Janne"]
+
     function makeList() {
         const lis = names.map(n => `<li>${n}</li>`).join("")
         document.getElementById("ul1").innerHTML = lis
@@ -54,11 +55,8 @@
         document.getElementById("ul1").firstChild.remove();
         names.shift()
         console.log(name)
-
-
-
-
     }
+    
     document.getElementById("btn-a3").onclick = (evt) => {
         evt.preventDefault()
         document.getElementById("ul1").lastChild.remove();
