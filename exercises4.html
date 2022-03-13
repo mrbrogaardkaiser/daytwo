@@ -60,6 +60,8 @@
         { id: 5, year: 2005, make: "Volvo", model: "V70", price: 44799 },
       ];
 
+      makeTable(cars);
+
       function makeTable(carslist) {
         const list = carslist
           .map(
@@ -73,14 +75,15 @@
           )
           .join("");
         document.getElementById("t1").innerHTML = list;
-      }
-      makeTable(cars);
+            }
+      
      /*
      A new filtered array is created having only prices < than the value provided
       This array is passed to the function implemented in the previous step, 
       nd the DOM is updated with this new table.
      
      */
+    // Eventhandler for filtering cars by price
         document.getElementById("btn-less").onclick = (evt) => {
           evt.preventDefault()
           const price = document.getElementById("input-id").value;
@@ -89,15 +92,33 @@
           makeTable(filteredCars);
         }
 
+    // Eventhandler for clearing input field
         document.getElementById("btn-clear").onclick = (evt) => {
           evt.preventDefault()
           document.getElementById("input-id").value = "";
           makeTable(cars)
         }
 
+    // Event handler for sorting by price
+
+      let sortAsc = false;
+
         document.getElementById("table-price").onclick = (evt) =>{
           evt.preventDefault()
-          console.log("Hej")
+          
+          const sortedCarsDesc = cars.sort((a,b)=>a.price-b.price)//largest to smallest
+          const sortedCarsAsc = cars.sort((a,b)=>b.price-a.price)// smallest to largest
+
+          if(sortAsc==false){
+            makeTable(sortedCarsAsc)
+            sortAsc = true
+            console.log(sortAsc)
+          }
+          else if(sortAsc==true){
+            makeTable(sortedCarsDesc)
+            sortAsc=false
+            console.log(sortAsc)
+          }
         }
 
     </script>
